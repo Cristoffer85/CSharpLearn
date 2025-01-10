@@ -1,4 +1,4 @@
-﻿Random random = new();
+Random random = new();
 int heroHealth = 10;
 int monsterHealth = 10;
 
