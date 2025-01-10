@@ -1,23 +1,35 @@
-﻿Random random = new();
-int heroHealth = 10;
-int monsterHealth = 10;
+﻿string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+int stringsCount = myStrings.Length;
 
-bool PerformAttack(ref int defenderHealth, string attacker, string defender)
+string myString = "";
+int periodLocation = 0;
+
+for (int i = 0; i < stringsCount; i++)
 {
-    int attackValue = random.Next(1, 11);
-    defenderHealth -= attackValue;
-    Console.WriteLine($"{attacker} attacks for {attackValue} damage. {defender} health: {Math.Max(defenderHealth, 0)}");
+    myString = myStrings[i];
+    periodLocation = myString.IndexOf(".");
 
-    if (defenderHealth <= 0)
+    string mySentence;
+
+    // extract sentences from each string and display them one at a time
+    while (periodLocation != -1)
     {
-        Console.WriteLine($"{defender} is defeated! {attacker} wins!");
-        return true;
-    }
-    return false;
-}
 
-do
-{
-    if (PerformAttack(ref monsterHealth, "Hero", "Monster")) break;
-    if (PerformAttack(ref heroHealth, "Monster", "Hero")) break;
-} while (heroHealth > 0 && monsterHealth > 0);
+        // first sentence is the string value to the left of the period location
+        mySentence = myString.Remove(periodLocation);
+
+        // the remainder of myString is the string value to the right of the location
+        myString = myString.Substring(periodLocation + 1);
+
+        // remove any leading white-space from myString
+        myString = myString.TrimStart();
+
+        // update the comma location and increment the counter
+        periodLocation = myString.IndexOf(".");
+
+        Console.WriteLine(mySentence);
+    }
+ 
+    mySentence = myString.Trim();
+    Console.WriteLine(mySentence);
+}
