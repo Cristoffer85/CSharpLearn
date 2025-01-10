@@ -1,34 +1,16 @@
-﻿// SKU = Stock Keeping Unit. 
-// SKU value format: <product #>-<2-letter color code>-<size code>
-string sku = "01-MN-L";
-
-string[] product = sku.Split('-');
-
-string type = "";
-string color = "";
-string size = "";
-
-type = product[0] switch
+﻿for (int i = 0; i < 100; i++)
 {
-    "01" => "Sweat shirt",
-    "02" => "T-Shirt",
-    "03" => "Sweat pants",
-    _ => "Other",
-};
-
-color = product[1] switch
-{
-    "BL" => "Black",
-    "MN" => "Maroon",
-    _ => "White",
-};
-
-size = product[2] switch
-{
-    "S" => "Small",
-    "M" => "Medium",
-    "L" => "Large",
-    _ => "One Size Fits All",
-};
-
-Console.WriteLine($"Product: {size} {color} {type}");
+    // (i % 3 = equally divisible by 3, i % 5 = equally divisible by 5) put in switch statement
+    string output = (i % 3, i % 5) switch
+    {
+        // if i % 3 = 0 and i % 5 = 0, output "FizzBuzz"
+        (0, 0) => "FizzBuzz",
+        // if i % 3 = 0, output "Fizz"
+        (0, _) => "Fizz",
+        // if i % 5 = 0, output "Buzz"
+        (_, 0) => "Buzz",
+        _ => i.ToString()
+    };
+    // print out the string output defined earlier
+    Console.WriteLine(output);
+}
