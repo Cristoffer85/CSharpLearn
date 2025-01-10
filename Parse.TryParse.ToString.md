@@ -1,3 +1,6 @@
+// Konvertera int till string == .ToString
+// Konvertera string till int == Parse, TryParse eller ConvertToInt 
+
 string[] values = { "12,3", "45", "ABC", "11", "DEF" };
 
 decimal total = 0m;
