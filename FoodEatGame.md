@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 Random random = new Random();
 Console.CursorVisible = false;
